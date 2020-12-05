@@ -118,7 +118,7 @@ def find_updates(old_json, new_json):
     old_stars = all_stars(old_json)
     new_stars = all_stars(new_json)
 
-    join = [m for m in new_json['members'] if m not in old_json['members']]
+    join = [new_json['members'][m] for m in new_json['members'] if m not in old_json['members']]
     early_stars = [ star for star in detect_early_stars(new_stars)
             if star[1] not in old_stars
                 and star[1][0] not in join ]
